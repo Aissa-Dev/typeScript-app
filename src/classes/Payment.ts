@@ -3,10 +3,9 @@ import { hasFormatter } from "../interfaces/HasFormatter.js";
 export class Payment implements hasFormatter {
   constructor(
     public recipient: string,
-    private amount: number,
-    readonly details: string
+    readonly details: string,
+    private amount: number
   ) {}
-
   format = () => {
     return `${this.recipient} is owed $${this.amount} for ${this.details}`;
   };

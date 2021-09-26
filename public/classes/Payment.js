@@ -1,9 +1,9 @@
 //Classes
 export class Payment {
-    constructor(recipient, amount, details) {
+    constructor(recipient, details, amount) {
         this.recipient = recipient;
-        this.amount = amount;
         this.details = details;
+        this.amount = amount;
         this.format = () => {
             return `${this.recipient} is owed $${this.amount} for ${this.details}`;
         };

@@ -3,8 +3,8 @@ import { hasFormatter } from "../interfaces/HasFormatter.js";
 export class Invoice implements hasFormatter {
   constructor(
     public client: string,
-    private amount: number,
-    readonly details: string
+    readonly details: string,
+    private amount: number
   ) {}
 
   format = () => {
