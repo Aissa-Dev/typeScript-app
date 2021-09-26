@@ -14,10 +14,15 @@ const amount = document.querySelector("#amount") as HTMLInputElement;
 form.addEventListener("submit", (e: Event) => {
   e.preventDefault();
   let doc: hasFormatter;
+  let values: [string, string, number] = [
+    tofrom.value,
+    details.value,
+    amount.valueAsNumber
+  ]!;
   if (type.value === "invoice") {
-    doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+    doc = new Invoice(...values);
   } else {
-    doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    doc = new Payment(...values);
   }
 
   list.render(doc, type.value, "start");
@@ -28,6 +33,15 @@ form.addEventListener("submit", (e: Event) => {
 
 //   return { ...obj, uid };
 // };
+
+//Enums
+enum ResourceType {
+  BOOK,
+  AUTHOR,
+  FILM,
+  DIRECTOR,
+  PERSON
+}
 
 const addUid = <T extends object>(obj: T) => {
   let uid = Math.floor(Math.random() * 100);
@@ -42,25 +56,33 @@ console.log(docOne);
 interface Resource<T> {
   uid: number;
   resourceName: string;
+  resourceType: ResourceType;
   data: T;
 }
 
 const resource: Resource<string> = {
   uid: 12,
   resourceName: "aissa",
+  resourceType: ResourceType.AUTHOR,
   data: "data"
 };
 
 const resource1: Resource<string[]> = {
   uid: 12,
   resourceName: "aissa",
+  resourceType: ResourceType.BOOK,
   data: ["data"]
 };
 
 const resource2: Resource<object> = {
   uid: 12,
   resourceName: "aissa",
+  resourceType: ResourceType.DIRECTOR,
   data: { name: "mihi" }
 };
 
 console.log(resource);
+
+let arr = ["aissa", 25, true];
+
+let tup: [string, number, boolean] = ["aissa", 28, true];
