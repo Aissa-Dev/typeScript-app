@@ -1,10 +1,19 @@
-type stringOrnumber = number | string;
-type nameAndUid = { name: string; uid: stringOrnumber };
+// exemple 01
+let greet: (a: string, b: number) => void;
 
-const logDetails = (uid: stringOrnumber, item: string) => {
-  console.log(`${item} has a uid of ${uid}`);
+greet = (name: string, age: number) => {
+  console.log(`${name} has ${age} years old`);
 };
 
-const greet = (user: nameAndUid) => {
-  console.log(`${user.name} says hello`);
+// exemple 02
+let calc: (a: number, b: number, c: string) => number;
+
+calc = (x: number, y: number, action: string) => {
+  if (action === "add") {
+    return x + y;
+  } else {
+    return x - y;
+  }
 };
+
+// exemple 03
