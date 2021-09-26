@@ -1,15 +1,8 @@
 import { Invoice } from "./classes/Invoice.js";
+import { ListTemplate } from "./classes/ListTemplate.js";
 import { Payment } from "./classes/Payment.js";
-// let docOne: hasFormatter;
-// let docTwo: hasFormatter;
-// docOne = new Invoice("yoshi", "web work", 250);
-// docTwo = new Payment("mario", "plumbing work", 300);
-// let docs: hasFormatter[] = [];
-// docs.push(docOne);
-// docs.push(docTwo);
-// const invOne = new Invoice("aissa", "web", 200);
-// const invTwo = new Invoice("rachid", "mobile", 300);
-// console.log(invOne, invTwo);
+const ul = document.querySelector("ul");
+const list = new ListTemplate(ul);
 const form = document.querySelector(".new-item-form"); // ts dont know the type of element only by className
 const type = document.querySelector("#type");
 const tofrom = document.querySelector("#tofrom");
@@ -24,6 +17,5 @@ form.addEventListener("submit", (e) => {
     else {
         doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
     }
-    console.log(doc);
-    //console.log(type.value, tofrom.value, details.value, amount.valueAsNumber);
+    list.render(doc, type.value, "start");
 });
